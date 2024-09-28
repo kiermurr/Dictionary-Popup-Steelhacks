@@ -1,20 +1,5 @@
 // content.js
 
-let isCtrlPressed = false;
-
-// Listen for keydown and keyup events to detect when 'Ctrl' is pressed
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Control') {
-    isCtrlPressed = true;
-  }
-});
-
-document.addEventListener('keyup', (event) => {
-  if (event.key === 'Control') {
-    isCtrlPressed = false;
-  }
-});
-
 // Fetch the word definitions from the JSON file
 let wordDefinitions = {};
 fetch(chrome.runtime.getURL('words-dictionary.json'))
@@ -27,10 +12,8 @@ fetch(chrome.runtime.getURL('words-dictionary.json'))
 document.addEventListener('mouseover', (event) => {
   const word = getWordUnderMouse(event);
   if (word) {
-    // Show popup if Ctrl key is pressed
-    if (isCtrlPressed) {
-      showPopup(event, word);
-    }
+    highlightWord(event.target);
+    showPopup(event, word);
   }
 });
 
@@ -46,6 +29,17 @@ function getWordUnderMouse(event) {
     return word;
   }
   return null;
+}
+
+// Highlight the hovered word
+function highlightWord(targetElement) {
+  if (targetElement && targetElement.nodeType === Node.TEXT_NODE) {
+    const parent = targetElement.parentElement;
+    parent.style.backgroundColor = 'yellow';  // Highlight color
+    setTimeout(() => {
+      parent.style.backgroundColor = '';  // Remove highlight after a short time
+    }, 2000);
+  }
 }
 
 // Show the popup with the word's definition
@@ -82,3 +76,4 @@ document.addEventListener('mouseout', () => {
     popup.style.display = 'none';
   }
 });
+
