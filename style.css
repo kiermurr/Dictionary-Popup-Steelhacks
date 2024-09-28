@@ -1,11 +1,26 @@
 /* style.css */
 #word-popup {
-    display: none;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    line-height: 1.4;
-    max-width: 300px;
-  }
+  display: block; /* Ensure the popup is always displayed */
+  position: absolute;
+  background-color: white;
+  border: 1px solid #333; /* Slightly darker border for contrast */
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif; /* Use a clean, sans-serif font */
+  font-size: 16px; /* Slightly larger font size for readability */
+  line-height: 1.5; /* Increased line height for better spacing */
+  color: #000; /* Dark text for contrast */
+  max-width: 300px;
+  padding: 10px;
+  z-index: 1000; /* Keep it on top */
+  transition: opacity 0.2s ease; /* Smooth transition for appearance */
+  opacity: 0.9; /* Slightly transparent background */
+}
+
+/* Optional: Add some styling for the word in bold */
+#word-popup strong {
+  color: #007BFF; /* Use a blue color for the word to make it stand out */
+}
+
   
   
