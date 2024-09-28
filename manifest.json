@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Dictionary Popup",
+    "version": "1.0",
+    "description": "Shows word definitions when hovering over a word and pressing the Ctrl key.",
+    "permissions": ["activeTab"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "css": ["style.css"]
+      }
+    ],
+    "web_accessible_resources": [{
+      "resources": ["words-dictionary.json"],
+      "matches": ["<all_urls>"]
+    }]
+  }
+  
+  
