@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Dictionary Popup",
+    "name": "Word Definition Popup",
     "version": "1.0",
-    "description": "Shows word definitions when hovering over a word and pressing the Ctrl key.",
+    "description": "Shows a popup with a word's definition when you hover over a word.",
     "permissions": ["activeTab"],
     "content_scripts": [
       {
@@ -16,5 +16,6 @@
       "matches": ["<all_urls>"]
     }]
   }
+  
   
   

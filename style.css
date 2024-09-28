@@ -1,6 +1,11 @@
 /* style.css */
 #word-popup {
-    display: none;  /* Initially hidden */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 300px;
   }
+  
   
