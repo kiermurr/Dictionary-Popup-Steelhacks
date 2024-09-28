@@ -138,6 +138,6 @@ function hidePopup() {
   const popup = document.querySelector('#word-popup');
   if (popup) {
     popup.style.display = 'none';
-    popupVisible = false;  // Mark that no popup is visible
+    popupVisible = false;  // Mark that no popup is visible blah
   }
 }
