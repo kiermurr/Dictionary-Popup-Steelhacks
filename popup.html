@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Extension Popup</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+      }
+      label, button {
+        display: block;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Extension Settings</h1>
+
+    <label for="toggleKey">Choose a toggle key:</label>
+    <input type="text" id="toggleKey" maxlength="1" value="t">
+    
+    <label for="enableToggle">
+      <input type="checkbox" id="enableToggle" checked>
+      Enable extension
+    </label>
+    
+    <button id="save">Save Settings</button>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

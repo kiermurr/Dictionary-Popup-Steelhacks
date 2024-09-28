@@ -1,6 +1,8 @@
 // content.js
 
 let wordDefinitions = {};
+let toggleKey = 't';  // Default key is 't' for showing the definition
+let keyPressed = false;  // Tracks if the toggle key is pressed
 
 // Fetch the word definitions from the JSON file
 fetch(chrome.runtime.getURL('words-dictionary.json'))
@@ -9,8 +11,34 @@ fetch(chrome.runtime.getURL('words-dictionary.json'))
     wordDefinitions = data;
   });
 
-// Listen for mouse movement to detect the word being hovered
+// Fetch the toggle key from chrome storage
+chrome.storage.sync.get(['toggleKey'], (result) => {
+  if (result.toggleKey) {
+    toggleKey = result.toggleKey;
+  }
+});
+
+// Listen for keydown and keyup events to track if the toggle key is pressed
+document.addEventListener('keydown', (event) => {
+  if (event.key.toLowerCase() === toggleKey.toLowerCase()) {
+    keyPressed = true;
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  if (event.key.toLowerCase() === toggleKey.toLowerCase()) {
+    keyPressed = false;
+    hidePopup();  // Hide the popup when the key is released
+  }
+});
+
+// Listen for mouse movement to detect the word being hovered, only if the key is pressed
 document.addEventListener('mousemove', (event) => {
+  if (!keyPressed) {
+    hidePopup();  // If the key is not pressed, don't show the popup
+    return;
+  }
+
   const word = getWordUnderMouse(event);
   if (word) {
     showPopup(event, word);
@@ -69,5 +97,7 @@ function hidePopup() {
     popup.style.display = 'none';
   }
 }
+
+
 
 

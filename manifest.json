@@ -1,9 +1,12 @@
 {
     "manifest_version": 3,
     "name": "Word Definition Popup",
-    "version": "1.0",
-    "description": "Shows a popup with a word's definition when you hover over a word.",
-    "permissions": ["activeTab"],
+    "version": "1.4",
+    "description": "Shows a popup with a word's definition when you hover over a word and press a key selected from the popup.",
+    "permissions": ["storage"],
+    "action": {
+      "default_popup": "popup.html"
+    },
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
@@ -16,6 +19,9 @@
       "matches": ["<all_urls>"]
     }]
   }
+  
+  
+  
   
   
   
